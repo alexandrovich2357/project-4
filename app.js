@@ -10,6 +10,10 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const cors = require("cors");
 
+const setup = require('./routes/movie-routes');
+const fileUp = require('./routes/file-upload-routes');
+
+const locksmith = require('./routes/locksmith')
 const auth = require("./routes/auth");
 
 // MONGOOSE CONNECTION
@@ -63,8 +67,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+
 // ROUTER MIDDLEWARE
 app.use("/auth", auth);
+app.use("/api", locksmith);
+
+//routes cloudinary
+app.use('/api', setup);
+app.use('/api', fileUp);
 
 // ERROR HANDLING
 // catch 404 and forward to error handler
