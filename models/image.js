@@ -7,5 +7,5 @@ const thingSchema = new Schema({
   imageUrl: { type: String, required: true },
 })
 
-const Movie = mongoose.model('Movie', thingSchema);
-module.exports = Movie;
+const Image = mongoose.model('Image', thingSchema);
+module.exports = Image;

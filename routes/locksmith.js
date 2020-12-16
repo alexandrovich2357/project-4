@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const Todo = require('../models/Todo');
+const Tiendas = require('../models/Tiendas');
 
 
 router.get('/locksmith', (req, res, next) => {
-    Todo.find()
+    Tiendas.find()
     .then((data) => {
         res.json(data)
         
@@ -15,7 +15,7 @@ router.get('/locksmith', (req, res, next) => {
 })
 
 router.post('/locksmith', async (req, res, next) => {
-    let newTodo = new Todo(req.body);
+    let newTiendas = new Tiendas(req.body);
     if (!req.body.name) {
       return res.status(400).send({
         success: 'false',
@@ -23,8 +23,9 @@ router.post('/locksmith', async (req, res, next) => {
       });
     }
     try {
-      const todo = await newTodo.save();
+      const todo = await newTiendas.save();
       res.status(200).json(todo);
+      return saveImagetoUser(aNewImage)
     } catch (error) {
       res.status(400).send({
         success: 'false',
@@ -32,5 +33,16 @@ router.post('/locksmith', async (req, res, next) => {
       });
     }
 })
+
+const saveImagetoUser = async (data) => {
+  console.log('Este es el data', data)
+ await User.findOneAndUpdate( 
+  
+      {'username': data.title},
+      {'image' : data.imageUrl}
+      )
+      return data
+}
+
 
 module.exports = router;
