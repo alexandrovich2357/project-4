@@ -93,4 +93,8 @@ app.use((err, req, res, next) => {
   }
 });
 
+app.use((req, res)=> {
+  res.sendFile(_dirname + "/public/index.htm");
+});
+
 module.exports = app;
