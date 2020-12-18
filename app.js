@@ -79,9 +79,6 @@ app.use('/api', setup);
 app.use('/api', fileUp);
 
 
-app.use((req, res)=> {
-  res.sendFile(_dirname + "/public/index.htm");
-});
 
 
 // ERROR HANDLING
@@ -101,6 +98,9 @@ app.use((err, req, res, next) => {
   }
 });
 
+app.use((req, res)=> {
+  res.sendFile(_dirname + "/public/index.htm");
+});
 
 
 module.exports = app;
