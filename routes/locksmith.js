@@ -44,5 +44,17 @@ const saveImagetoUser = async (data) => {
       return data
 }
 
+router.delete('/locksmith/:id', async (req, res, next) => {
+  const {id} = req.params;
+    try {
+      const deleted = await Tiendas.findByIdAndRemove(id);
+      return res.status(200).json(deleted);
+    } catch (error) {
+      res.status(400).send({
+        success: 'false',
+        message: 'Unable to delete from database',
+      });
+    }
+})
 
 module.exports = router;
