@@ -69,7 +69,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 app.use((req, res)=> {
-  res.sendFile(_dirname + "/public/index.htm");
+  res.sendFile(__dirname + "/public/index.htm");
 });
 
 
