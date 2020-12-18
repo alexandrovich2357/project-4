@@ -67,9 +67,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use((req, res)=> {
-  res.sendFile(_dirname + "/public/index.htm");
-});
 
 
 // ROUTER MIDDLEWARE
@@ -80,6 +77,10 @@ app.use("/api", locksmith);
 app.use('/api', setup);
 app.use('/api', fileUp);
 
+
+app.use((req, res)=> {
+  res.sendFile(_dirname + "/public/index.htm");
+});
 
 
 // ERROR HANDLING
