@@ -68,6 +68,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 
+app.use((req, res)=> {
+  res.sendFile(_dirname + "/public/index.htm");
+});
 
 
 // ROUTER MIDDLEWARE
@@ -98,9 +101,6 @@ app.use((err, req, res, next) => {
   }
 });
 
-app.use((req, res)=> {
-  res.sendFile(_dirname + "/public/index.htm");
-});
 
 
 module.exports = app;
