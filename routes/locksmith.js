@@ -15,23 +15,16 @@ router.get('/locksmith', (req, res, next) => {
 })
 
 router.post('/locksmith', async (req, res, next) => {
-    let newTiendas = new Tiendas(req.body);
-    if (!req.body.name) {
-      return res.status(400).send({
-        success: 'false',
-        message: 'title is required',
-      });
-    }
-    try {
-      const todo = await newTiendas.save();
-      res.status(200).json(todo);
-      return saveImagetoUser(aNewImage)
-    } catch (error) {
-      res.status(400).send({
-        success: 'false',
-        message: 'Unable to save to database',
-      });
-    }
+  Tienda.create(req.body)
+  .then( newTienda => {
+      console.log('Created new tienda: ', newTienda);
+      res.json(newTienda)
+  })
+  .catch( err => {
+      console.log(err)
+      next(err)
+  })
+  
 })
 
 const saveImagetoUser = async (data) => {
