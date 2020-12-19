@@ -74,14 +74,16 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/auth", auth);
 app.use("/api", locksmith);
 
+app.use((req, res)=> {
+  res.sendFile(__dirname + "/public/index.html");
+});
+
 //routes cloudinary
 app.use('/api', setup);
 app.use('/api', fileUp);
 
 
-app.use((req, res)=> {
-  res.sendFile(__dirname + "/public/index.html");
-});
+
 
 // ERROR HANDLING
 // catch 404 and forward to error handler
