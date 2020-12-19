@@ -80,7 +80,7 @@ app.use('/api', setup);
 app.use('/api', fileUp);
 
 
-app.use((req, res)=> {
+app.use((req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
 
