@@ -15,8 +15,8 @@ router.get('/locksmith', (req, res, next) => {
 })
 
 router.post('/locksmith', async (req, res, next) => {
-    let newTiendas =  Tiendas.create(req.body);
-    if (!req.body.title) {
+    let newTiendas = Tiendas.create(req.body);
+    if (!req.body.name) {
       return res.status(400).send({
         success: 'false',
         message: 'title is required',
