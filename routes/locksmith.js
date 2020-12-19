@@ -15,7 +15,7 @@ router.get('/locksmith', (req, res, next) => {
 })
 
 router.post('/locksmith', async (req, res, next) => {
-    let newTiendas = new Tiendas(req.body);
+    let newTiendas =  Tiendas.create(req.body);
     if (!req.body.title) {
       return res.status(400).send({
         success: 'false',
