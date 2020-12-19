@@ -68,7 +68,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 
-
+app.use((req, res)=> {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 // ROUTER MIDDLEWARE
 app.use("/auth", auth);
@@ -79,9 +81,7 @@ app.use('/api', setup);
 app.use('/api', fileUp);
 
 
-app.use((req, res)=> {
-  res.sendFile(__dirname + "/public/index.html");
-});
+
 
 // ERROR HANDLING
 // catch 404 and forward to error handler
