@@ -79,7 +79,7 @@ app.use('/api', setup);
 app.use('/api', fileUp);
 
 app.use((req, res)=> {
-  res.sendFile(__dirname + "/public/index.htm");
+  res.sendFile(_dirname + "/public/index.htm");
 });
 
 
