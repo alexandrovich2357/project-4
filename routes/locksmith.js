@@ -15,7 +15,7 @@ router.get('/locksmith', (req, res, next) => {
 })
 
 router.post('/locksmith', async (req, res, next) => {
-  Tienda.create(req.body)
+  Tiendas.create(req.body)
   .then( newTienda => {
       console.log('Created new tienda: ', newTienda);
       res.json(newTienda)
