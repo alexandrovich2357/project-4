@@ -72,12 +72,12 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // ROUTER MIDDLEWARE
 app.use("/auth", auth);
-app.use("/api", locksmith);
+app.use("/lock", locksmith);
 
 
 //routes cloudinary
 app.use('/api', setup);
-app.use('/api', fileUp);
+app.use('/fileup', fileUp);
 
 
 app.use((req, res) => {
