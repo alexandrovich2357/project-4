@@ -10,7 +10,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const cors = require("cors");
 
-const setup = require('./routes/movie-routes');
+const setup = require('./routes/image-routes');
 const fileUp = require('./routes/file-upload-routes');
 
 const locksmith = require('./routes/locksmith')
@@ -76,7 +76,7 @@ app.use("/lock", locksmith);
 
 
 //routes cloudinary
-app.use('/api', setup);
+app.use('/fileup', setup);
 app.use('/fileup', fileUp);
 
 

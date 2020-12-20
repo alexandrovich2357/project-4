@@ -8,12 +8,7 @@ let tiendas = new Schema(
     specialty: String,
     phone: String,
     web: String,
-    image: {
-      type: String,
-      ref: "Image",
-      default:
-        "https://www.eguardtech.com/wp-content/uploads/2018/08/Network-Profile.png",
-    },
+    imageUrl: String
   },
   { timestamps: true }
 );
