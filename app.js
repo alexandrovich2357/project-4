@@ -81,7 +81,7 @@ app.use('/fileup', fileUp);
 
 
 app.use((req, res) => {
-  res.sendFile(__dirname + "public/index.html");
+  res.sendFile(__dirname + "/public/index.html");
 });
 
 // ERROR HANDLING
