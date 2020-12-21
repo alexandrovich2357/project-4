@@ -14,6 +14,28 @@ router.get('/locksmith', (req, res, next) => {
     })
 })
 
+
+router.get('/locksmith/:id', async (req, res, next) => { 
+  const {id} = req.params;
+    if(!ObjectId.isValid(id) && !id.match(/^[a-fA-F0-9]{24}$/)){
+      return res.status(404).send({
+        success: 'false',
+        message: 'todo does not exist',
+      });
+    }
+    try {
+      const todos = await Tiendas.findById(id);
+      res.json(todos);
+    } catch (error) {
+      console.log(error);
+    }
+})
+
+
+
+
+
+
 router.post('/locksmith', async (req, res, next) => {
     let newTiendas = new Tiendas(req.body);
     if (!req.body.name) {
@@ -32,6 +54,18 @@ router.post('/locksmith', async (req, res, next) => {
         message: 'Unable to save to database',
       });
     }
+})
+
+router.put('/locksmith/:id', async (req, res, next) => {
+    const {id} = req.params;
+    const data = req.body;
+  try {
+    const updated = await Tiendas.findByIdAndUpdate(id, data, {new:true});
+    return res.status(200).json(updated);
+
+  } catch (error) {
+    res.json(error);
+  }
 })
 
 const saveImagetoUser = async (data) => {
