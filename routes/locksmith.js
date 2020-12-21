@@ -16,7 +16,7 @@ router.get('/locksmith', (req, res, next) => {
 
 
 router.get('/locksmith/:id', async (req, res, next) => { 
-  const {id} = req.params;
+  const {id} = req.params.id;
     if(!ObjectId.isValid(id) && !id.match(/^[a-fA-F0-9]{24}$/)){
       return res.status(404).send({
         success: 'false',
