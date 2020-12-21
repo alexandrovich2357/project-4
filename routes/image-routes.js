@@ -27,9 +27,9 @@ router.post('/images/create', (req, res, next) => {
     // req.body to the .create() method
     
     Image.create(req.body)
-    .then( aNewImage => {
-        console.log('Created new image: ', aNewImage);
-        res.status(200).json(aNewImage);
+    .then( (aNewImage) => {
+        console.log('Created new image: ', {aNewImage});
+        res.status(200).json({aNewImage});
         // return saveImagetoUser(aNewImage)
     })
     .catch( err => next(err) )

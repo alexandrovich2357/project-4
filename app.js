@@ -76,7 +76,7 @@ app.use("/lock", locksmith);
 
 
 //routes cloudinary
-app.use('/fileup', setup);
+app.use('/api', setup);
 app.use('/fileup', fileUp);
 
 
