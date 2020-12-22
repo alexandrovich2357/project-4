@@ -30,7 +30,7 @@ router.post('/images/create', (req, res, next) => {
     .then( (aNewImage) => {
         console.log('Created new image: ', {aNewImage});
         res.status(200).json({aNewImage});
-        // return saveImagetoUser(aNewImage)
+        return saveImagetoUser(aNewImage)
     })
     .catch( err => next(err) )
 })

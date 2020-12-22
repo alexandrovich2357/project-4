@@ -11,7 +11,7 @@ const MongoStore = require("connect-mongo")(session);
 const cors = require("cors");
 
 const setup = require('./routes/image-routes');
-const fileUp = require('./routes/file-upload-routes');
+const fileup = require('./routes/file-upload-routes');
 
 const locksmith = require('./routes/locksmith')
 const auth = require("./routes/auth");
@@ -77,11 +77,11 @@ app.use("/lock", locksmith);
 
 //routes cloudinary
 app.use('/api', setup);
-app.use('/fileup', fileUp);
+app.use('/api', fileup);
 
 
 app.use((req, res) => {
-  res.sendFile(__dirname + "/public/index.html");
+  res.sendFile( __dirname + "/public/" + "index.html" );
 });
 
 // ERROR HANDLING

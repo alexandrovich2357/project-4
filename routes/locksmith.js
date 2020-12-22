@@ -4,27 +4,20 @@ const router = express.Router();
 const Tiendas = require('../models/Tiendas');
 
 
-router.get('/locksmith', (req, res, next) => { 
-    Tiendas.find()
-    .then((data) => {
-        res.json(data)
-        
-    }).catch(err => {
+router.get('/locksmith', async (req, res, next) => { 
+    try{
+     const tiendas =  await Tiendas.find()
+        res.json(tiendas)
+    }catch(err){
         console.log(err)
-    })
+    }
 })
 
 
 router.get('/locksmith/:id', async (req, res, next) => { 
   const {id} = req.params.id;
-    if(!ObjectId.isValid(id) && !id.match(/^[a-fA-F0-9]{24}$/)){
-      return res.status(404).send({
-        success: 'false',
-        message: 'todo does not exist',
-      });
-    }
     try {
-      const todos = await Tiendas.findById(id);
+      const todos = await Tiendas.findOne(id);
       res.json(todos);
     } catch (error) {
       console.log(error);
@@ -70,12 +63,14 @@ router.put('/locksmith/:id', async (req, res, next) => {
 
 const saveImagetoUser = async (data) => {
   console.log('Este es el data', data)
- await User.findOneAndUpdate( 
+ try{await User.findOneAndUpdate( 
   
       {'username': data.title},
       {'image' : data.imageUrl}
       )
-      return data
+      return data}catch(error){
+        console.log(error)
+      }
 }
 
 router.delete('/locksmith/:id', async (req, res, next) => {
