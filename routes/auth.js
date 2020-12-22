@@ -35,9 +35,7 @@ router.post(
         const newUser = await User.create({ username, password: hashPass });
         // luego asignamos el nuevo documento user a req.session.currentUser y luego enviamos la respuesta en json
         req.session.currentUser = newUser;
-        res
-          .status(200) //  OK
-          .json(newUser);
+        res.status(200).json(newUser);
       }
     } catch (error) {
       next(error);
