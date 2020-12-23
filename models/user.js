@@ -5,12 +5,6 @@ const userSchema = new Schema(
   {
     username: String,
     password: String,
-    imageUrl: {
-      type: Schema.Types.ObjectId,
-      ref: "Image",
-      default:
-        "https://www.eguardtech.com/wp-content/uploads/2018/08/Network-Profile.png",
-    },
   },
   {
     timestamps: {
