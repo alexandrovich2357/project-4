@@ -40,7 +40,7 @@ router.post('/locksmith', async (req, res, next) => {
     try {
       const tienda = await newTiendas.save();
       res.status(200).json(tienda);
-      // return saveImagetoUser(aNewImage)
+      return saveImagetoUser(aNewImage)
     } catch (error) {
       res.status(400).send({
         success: 'false',
