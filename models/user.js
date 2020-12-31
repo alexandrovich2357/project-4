@@ -5,7 +5,7 @@ const userSchema = new Schema(
   {
     username: String,
     password: String,
-    imgUrl: S
+    imageUrl: {type: String, ref: 'Image', default: 'https://www.eguardtech.com/wp-content/uploads/2018/08/Network-Profile.png'}
   },
   {
     timestamps: {
